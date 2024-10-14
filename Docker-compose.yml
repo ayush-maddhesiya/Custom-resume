@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - pdflatex
+  pdflatex:
+    image: blang/latex
+    volumes:
+      - ./uploads:/app/uploads
